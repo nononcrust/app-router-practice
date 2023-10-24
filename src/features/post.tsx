@@ -35,6 +35,7 @@ export const postApi = {
   },
 };
 
+// https://tkdodo.eu/blog/effective-react-query-keys#use-query-key-factories
 export const queryKeys = {
   all: () => [ENDPOINT] as const,
   list: () => [ENDPOINT, "list"] as const,
@@ -55,6 +56,7 @@ export const usePost = (postId?: number) => {
   });
 };
 
+// https://tanstack.com/query/latest/docs/react/guides/updates-from-mutation-responses
 export const useCreatePost = () => {
   const queryClient = useQueryClient();
 
@@ -115,6 +117,7 @@ export const prefetchPostDetail = async (postId: number) => {
   return { dehydratedState };
 };
 
+// https://tkdodo.eu/blog/type-safe-react-query#validation-in-the-queryfn
 const postRequestSchema = z.object({
   title: z.string(),
   body: z.string(),
@@ -136,6 +139,7 @@ type Post = z.infer<typeof postSchema>;
 
 type PostList = z.infer<typeof postListSchema>;
 
+// https://tanstack.com/query/latest/docs/react/guides/advanced-ssr#prefetching-and-dehydrating-data
 export const PostListFetcher = async ({ children }: PropsWithChildren) => {
   const { dehydratedState } = await prefetchPostList();
 
