@@ -47,7 +47,7 @@ export const PostDetail = () => {
           삭제
         </Button>
         <Button onClick={onUpdateButtonClick}>수정</Button>
-        <Button variant="secondary">
+        <Button variant="secondary" asChild>
           <Link href={ROUTE.POST.LIST}>목록으로</Link>
         </Button>
       </div>
