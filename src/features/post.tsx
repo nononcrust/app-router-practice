@@ -4,6 +4,7 @@ import {
   HydrationBoundary,
   dehydrate,
   useMutation,
+  useQuery,
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
@@ -43,14 +44,14 @@ export const queryKeys = {
 };
 
 export const usePostList = () => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: queryKeys.list(),
     queryFn: postApi.getPostList,
   });
 };
 
 export const usePost = (postId?: number) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: queryKeys.detail(postId),
     queryFn: () => (postId ? postApi.getPostById(postId) : null),
   });

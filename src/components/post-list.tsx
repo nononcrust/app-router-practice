@@ -27,7 +27,7 @@ export const PostList = () => {
           추가하기
         </Button>
       </div>
-      {data.map((item, index) => (
+      {data?.map((item, index) => (
         <Link href={ROUTE.POST.DETAIL(item.id)} key={index}>
           {item.title}
         </Link>
